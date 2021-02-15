@@ -1,0 +1,12 @@
+{
+    "$schema": "http://com2000.gitee.io/comcontainer/schema/schema.json",
+    "components":
+    {
+        "intValue": 123,
+        "doubleValue": 3.14,
+        "stringValue": "hello",
+        "trueValue": true,
+        "falseValue": false,
+        "nullValue": null
+    }
+}

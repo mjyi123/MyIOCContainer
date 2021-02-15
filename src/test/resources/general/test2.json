@@ -1,0 +1,84 @@
+{
+    "$schema": "http://com2000.gitee.io/comcontainer/schema/schema.json",
+    "components":
+    {
+        "c1": {"list": []},
+        "c2": {"list": [100]},
+        "c3": {"list": [123, 456, 789]},
+        "c4": {"list": [123, "hello", 456]},
+        "c5": {"set": []},
+        "c6": {"set": [888]},
+        "c7": {"set": ["aaa", "bbb", "ccc"]},
+        "c8": {"set": [123, "bbb", "ccc"]},
+        "c9": {"map": {}},
+        "c10":
+        {
+            "map":
+            {
+                "k1": 123,
+                "k2": 456,
+                "k3": 789
+            }
+        },
+        "c11":
+        {
+            "map":
+            {
+                "k": "v"
+            }
+        },
+        "c12":
+        {
+            "map":
+            {
+                "key1": 111,
+                "key2": "hello",
+                "key3": 222
+            }
+        },
+        "c13": {"map": []},
+        "c14":
+        {
+            "map":
+            [
+                {"key": 123, "value": "aaa"}
+            ]
+        },
+        "c15":
+        {
+            "map":
+            [
+                {"key": 123, "value": "aaa"},
+                {"key": 456, "value": "bbb"},
+                {"key": 789, "value": "ccc"}
+            ]
+        },
+        "c16":
+        {
+            "map":
+            [
+                {"key": 123, "value": "aaa"},
+                {"key": 456, "value": 999},
+                {"key": 789, "value": "ccc"}
+            ]
+        },
+        "c17":
+        {
+            "list":
+            [
+                {
+                    "class": "com.container.test.JsonContainerFactoryTest$Student",
+                    "parameters": [1001, "com", {"list": [10, 20, 30]}]
+                },
+                {
+                    "class": "com.container.test.JsonContainerFactoryTest$Student",
+                    "parameters": [1002, "XiaoMing", {"list": [40, 50, 60]}]
+                },
+                {
+                    "class": "com.container.test.JsonContainerFactoryTest$Student",
+                    "parameters": [1003, "XiaoHua", {"list": [70, 80, 90]}]
+                }
+            ]
+        }
+    }
+}

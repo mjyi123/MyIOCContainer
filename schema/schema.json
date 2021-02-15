@@ -1,0 +1,220 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title":"comScript configuration file",
+    "definitions":
+    {
+        "component":
+        {
+            "anyOf":
+            [
+                {"type": "string"},
+                {"type": "number"},
+                {"type": "boolean"},
+                {"type": "null"},
+                {
+                    "type": "object",
+                    "properties":
+                    {
+                        "ref": {"type": "string"}
+                    },
+                    "required": ["ref"]
+                },
+                {
+                    "type": "object",
+                    "properties":
+                    {
+                        "list": {"$ref": "#/definitions/componentList"},
+                        "mapper": {"$ref": "#/definitions/mapper"},
+                        "locals": {"$ref": "#/definitions/locals"},
+                        "singleton": {"type": "boolean"}
+                    },
+                    "required": ["list"]
+                },
+                {
+                    "type": "object",
+                    "properties":
+                    {
+                        "set": {"$ref": "#/definitions/componentList"},
+                        "mapper": {"$ref": "#/definitions/mapper"},
+                        "locals": {"$ref": "#/definitions/locals"},
+                        "singleton": {"type": "boolean"}
+                    },
+                    "required": ["set"]
+                },
+                {
+                    "type": "object",
+                    "properties":
+                    {
+                        "map":
+                        {
+                            "anyOf":
+                            [
+                                {
+                                    "type": "object",
+                                    "patternProperties":
+                                    {
+                                        ".*": {"$ref": "#/definitions/component"}
+                                    }
+                                },
+                                {
+                                    "type": "array",
+                                    "items":
+                                    {
+                                        "type": "object",
+                                        "properties":
+                                        {
+                                            "key": {"$ref": "#/definitions/component"},
+                                            "value": {"$ref": "#/definitions/component"}
+                                        },
+                                        "required": ["key", "value"]
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    "required": ["map"]
+                },
+                {
+                    "type": "object",
+                    "properties":
+                    {
+                        "class": {"type": "string"},
+                        "parameters": {"$ref": "#/definitions/componentList"},
+                        "properties": {"$ref": "#/definitions/properties"},
+                        "setters": {"$ref": "#/definitions/setters"},
+                        "mapper": {"$ref": "#/definitions/mapper"},
+                        "locals": {"$ref": "#/definitions/locals"},
+                        "singleton": {"type": "boolean"}
+                    },
+                    "required": ["class"]
+                },
+                {
+                    "type": "object",
+                    "properties":
+                    {
+                        "factory": {"type": "string"},
+                        "method": {"type": "string"},
+                        "parameters": {"$ref": "#/definitions/componentList"},
+                        "properties": {"$ref": "#/definitions/properties"},
+                        "setters": {"$ref": "#/definitions/setters"},
+                        "mapper": {"$ref": "#/definitions/mapper"},
+                        "locals": {"$ref": "#/definitions/locals"},
+                        "singleton": {"type": "boolean"}
+                    },
+                    "required": ["factory", "method"]
+                },
+                {
+                    "type": "object",
+                    "properties":
+                    {
+                        "instance": {"$ref": "#/definitions/component"},
+                        "method": {"type": "string"},
+                        "parameters": {"$ref": "#/definitions/componentList"},
+                        "properties": {"$ref": "#/definitions/properties"},
+                        "setters": {"$ref": "#/definitions/setters"},
+                        "mapper": {"$ref": "#/definitions/mapper"},
+                        "locals": {"$ref": "#/definitions/locals"},
+                        "singleton": {"type": "boolean"}
+                    },
+                    "required": ["instance", "method"]
+                },
+                {
+                    "type": "object",
+                    "properties":
+                    {
+                        "if": {"$ref": "#/definitions/component"},
+                        "then": {"$ref": "#/definitions/component"},
+                        "else": {"$ref": "#/definitions/component"},
+                        "properties": {"$ref": "#/definitions/properties"},
+                        "setters": {"$ref": "#/definitions/setters"},
+                        "mapper": {"$ref": "#/definitions/mapper"},
+                        "locals": {"$ref": "#/definitions/locals"},
+                        "singleton": {"type": "boolean"}
+                    },
+                    "required": ["if", "then", "else"]
+                },
+                {
+                    "type": "object",
+                    "properties":
+                    {
+                        "custom": {"type": "string"},
+                        "parameters": {"$ref": "#/definitions/componentList"},
+                        "properties": {"$ref": "#/definitions/properties"},
+                        "setters": {"$ref": "#/definitions/setters"},
+                        "mapper": {"$ref": "#/definitions/mapper"},
+                        "locals": {"$ref": "#/definitions/locals"},
+                        "singleton": {"type": "boolean"}
+                    },
+                    "required": ["custom"]
+                }
+            ]
+        },
+        "componentList":
+        {
+            "type": "array",
+            "items": {"$ref": "#/definitions/component"}
+        },
+        "properties":
+        {
+            "type": "object",
+            "patternProperties":
+            {
+                ".*": {"$ref": "#/definitions/component"}
+            }
+        },
+        "setters":
+        {
+            "type": "object",
+            "patternProperties":
+            {
+                ".*":
+                {
+                    "type": "array",
+                    "items": {"$ref": "#/definitions/component"}
+                }
+            }
+        },
+        "mapper":
+        {
+            "anyOf":
+            [
+                {"type": "string"},
+                {
+                    "type": "object",
+                    "properties":
+                    {
+                        "class": {"type": "string"},
+                        "componentList": {"$ref": "#/definitions/componentList"}
+                    },
+                    "required": ["class", "parameters"]
+                }
+            ]
+        },
+        "locals":
+        {
+            "type": "object",
+            ".*": {"$ref": "#/definitions/component"}
+        }
+    },
+    "type": "object",
+    "properties":
+    {
+        "components":
+        {
+            "type": "object",
+            "patternProperties":
+            {
+                ".*": {"$ref": "#/definitions/component"}
+            }
+        },
+        "typeAlias":
+        {
+            "type": "object",
+            "patternProperties":
+            {
+                ".*": {"type": "string"}
+            }
+        }
+    },
+    "required": ["components"]
+}

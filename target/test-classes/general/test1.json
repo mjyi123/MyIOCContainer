@@ -1,0 +1,12 @@
+{
+    "$schema": "http://byx2000.gitee.io/byxcontainer/schema/schema.json",
+    "components":
+    {
+        "intValue": 123,
+        "doubleValue": 3.14,
+        "stringValue": "hello",
+        "trueValue": true,
+        "falseValue": false,
+        "nullValue": null
+    }
+}

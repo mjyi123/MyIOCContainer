@@ -1,0 +1,38 @@
+{
+    "$schema": "http://com2000.gitee.io/comcontainer/schema/schema.json",
+    "components":
+    {
+        "c1": "hello",
+        "c2": 123,
+        "c3": {"ref": "c1"},
+        "c4": {"ref": "c2"},
+        "c5": {"ref": "c1"},
+        "c6":
+        {
+            "list": [{"ref": "c1"}, {"ref": "a"}, {"ref": "b"}, {"ref": "c"}, {"ref": "c5"}],
+            "locals":
+            {
+                "a": "powerful",
+                "b": "com",
+                "c": "container",
+                "c5": "!"
+            }
+        },
+        "c7":
+        {
+            "ref": "c1",
+            "locals":
+            {
+                "c1": "hi"
+            }
+        },
+        "c8":
+        {
+            "ref": "c9",
+            "locals":
+            {
+                "c9": "thank you"
+            }
+        }
+    }
+}

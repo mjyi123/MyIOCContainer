@@ -1,0 +1,59 @@
+{
+    "$schema": "http://com2000.gitee.io/comcontainer/schema/schema.json",
+    "components":
+    {
+        "name": "XiaoHong",
+        "id": 1010,
+        "c1":
+        {
+            "class": "com.container.test.JsonContainerFactoryTest$Student",
+            "properties":
+            {
+                "id": 1001,
+                "name": "com",
+                "scores": {"list": [70, 80, 90]}
+            }
+        },
+        "c2":
+        {
+            "class": "com.container.test.JsonContainerFactoryTest$Student2",
+            "properties":
+            {
+                "id": 1002,
+                "name": "XiaoMing",
+                "age": 21,
+                "male": true,
+                "scores": {"list": [70, 60, 50]}
+            }
+        },
+        "c3":
+        {
+            "class": "com.container.test.JsonContainerFactoryTest$Student",
+            "properties":
+            {
+                "id": {"ref": "id"},
+                "name": {"ref": "name"},
+                "scores": {"ref": "scores"}
+            },
+            "locals":
+            {
+                "id": 1003,
+                "scores": {"list": [10, 20, 30]}
+            }
+        },
+        "c4":
+        {
+            "class": "com.container.test.JsonContainerFactoryTest$Student",
+            "properties":
+            {
+                "id": 1004,
+                "name":
+                {
+                    "class": "java.lang.String",
+                    "parameters": ["XiaoHua"]
+                },
+                "scores": {"list": [10, 20, 30]}
+            }
+        }
+    }
+}
