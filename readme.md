@@ -297,7 +297,7 @@ Container also supports the following special component definitions:
 * Collection component
 * Reference component
 * Condition component
-### 集合组件
+### Collection component
 Container supports the three collection components `List`, `Set` and `Map`.
 
 The following is the definition of these three collection components:
